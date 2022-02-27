@@ -86,4 +86,41 @@ class MemberTest {
         long deletedCount = memberJpaRepository.count();
         assertThat(deletedCount).isEqualTo(0);
     }
+    @Test
+    public void testNamedQuery() throws Exception{
+        // given
+        Member member1 = new Member("AAA");
+        Member member2 = new Member("BBB");
+        memberJpaRepository.save(member1);
+        memberJpaRepository.save(member2);
+        // when
+        List<Member> result = memberJpaRepository.findByUsername("AAA");
+        Member member = result.get(0);
+
+        assertThat(member).isEqualTo(member1);
+
+        // then
+    }
+
+    @Test
+    public void paging() {
+        //given
+        memberJpaRepository.save(new Member("member1", 10));
+        memberJpaRepository.save(new Member("member2", 10));
+        memberJpaRepository.save(new Member("member3", 10));
+        memberJpaRepository.save(new Member("member4", 10));
+        memberJpaRepository.save(new Member("member5", 10));
+
+        int age = 10;
+        int offset = 0;
+        int limit = 3;
+
+        //when
+        List<Member> members = memberJpaRepository.findByPage(age, offset, limit);
+        long totalCount = memberJpaRepository.totalCount(age);
+
+        //then
+        assertThat(members.size()).isEqualTo(3);
+        assertThat(totalCount).isEqualTo(5);
+    }
 }
