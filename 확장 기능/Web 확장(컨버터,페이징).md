@@ -177,7 +177,23 @@ Page<Member>는 엔티티를 그대로 API로 노출하기 때문에 다양한 �
 ```
   
 축약
-  
+    
+```java    
+   
+@GetMapping("/members")
+    public Page<MemberDto> list(@PageableDefault(size = 5) Pageable pageable){
+        Page<MemberDto> map = memberRepository.findAll(pageable).map(m -> new MemberDto(m.getId(), m.getUsername(), null));
+        return map;
+    }    
+    
+    
+```  
+    
+<br/>
+    
+
+DTO에 변수로 Member엔티티를 받는 과정    
+    
 ```java
   
   @GetMapping("/members")
