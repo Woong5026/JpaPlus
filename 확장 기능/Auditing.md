@@ -46,6 +46,27 @@ public class Member extends JpaBaseEntity {...
 
 ```
 
+<br/>
+
++) @EntityListener?
+
+감시할 대상 Entity에 AuditingEntityListener를 등록 및 필드 정의 <br/>
+해당 엔티티 클래스에 @EntityListener를 선언하고, 이 안에 AuditingEntityListener를 등록한다.  
+
+엔티티를 DB에 적용하기 이전 이후에 커스텀 콜백을 요청할 수 있는 어노테이션으로,<br/>
+해당 엔티티 라이프 사이클 중 특점 시점에 원하는 로직을 처리할 수 있게 한다. <br/>
+JPA에서는 다음과 같은 7가지 이벤트를 지원한다. 
+
+@PrePersist : 새로운 엔티티에 대해 persist가 호출되기 전 <br/>
+@PreUpdate : 엔티티 업데이트 작업 전 <br/>
+@PreRemove : 엔티티가 제거되기 전  <br/>
+@PostPersist : 새로운 엔티티에 대해 persist가 호출된 후 <br/>
+@PostUpdate : 엔티티가 업데이트된 후 <br/>
+@PostRemove : 엔티티가 삭제된 후 <br/>
+@PostLoad : Select조회가 일어난 직후에 실행
+
+<br/>
+
 ---
 
 * 스프링 데이터 JPA 사용
