@@ -95,6 +95,20 @@ public class JpaPlusApplication {
 
 <br/><br/>
 
+@CreatedDate (org.springframework.data) <br/>
+데이터 생성 날짜 자동 저장 어노테이션
+
+@LastModifiedDate (org.springframework.data) <br/>
+데이터 수정 날짜 자동 저장 어노테이션
+
+@CreatedBy (org.springframework.data) <br/>
+데이터 생성자 자동 저장 어노테이션
+
+@LastModifiedBy (org.springframework.data) <br/>
+데이터 수정자 자동 저장 어노테이션
+
+<br/>
+
 * BaseEntity
 
 ```java
