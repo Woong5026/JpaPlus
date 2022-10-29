@@ -206,6 +206,36 @@ public class BaseEntity extends BaseTimeEntity {
 
 ```
 
+<br/>
+
++) @MappedSuperclass가 아닌 임베디드 값 타입을 사용하면 안될까? <br/>
+-> 이것은 상속을 사용하냐 위임을 사용하냐의 차이다. <br/>
+객체지향의 일반적인 법칙에 따르면 상속보다는 위임이 좋겠지만, JPA에서는 상속을 사용하는게 더욱 편리하다.
+
+예를 들어 임베디드 타입이 다음과 같이 있다고 하자.
+
+```java
+class TraceDate {
+  TYPE createdDate;
+  TYPE updatedDate;
+}
 
 
+```
+만약 JPQL을 사용한다면 항상 임베디드 타입을 적어주어야 하는 불편함이 있다.
 
+```java
+
+select m from Member m where m.traceDate.createdDate > ?
+
+
+```
+
+@MappedSuperclass, 상속을 사용하면 다음과 같이 간단하고 쉽게 풀린다.
+
+```java
+
+select m from Member m where m.createdDate > ?
+
+
+```
