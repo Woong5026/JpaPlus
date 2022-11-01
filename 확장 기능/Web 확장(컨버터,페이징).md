@@ -203,4 +203,18 @@ DTO에 변수로 Member엔티티를 받는 과정
     }
   
 ```
+<br/><br/>
 
+#### Page를 1부터 시작하기
+    
+스프링 데이터는 Page를 0부터 시작한다. 먄약 1부터 시작하려면?
+
+ 
+
+1. Pageable, Page를 파라미터와 응답 값으로 사용하지 않고, 직접 클래스를 만들어서 처리한다.
+    
+2. spring.data.web.pageable.one-indexed-parameters: true 설정을 추가한다. 
+
+그런데 이 방법은 Page의 다른 속성들은(pageSize, pageNumber, ...) page가 0부터 시작한다고 가정한 값이 저장되어 있기 때문에 한계가 있다. <br/>
+-> 제일 깔끔한 방법은 그냥 페이지를 0부터 시작하는 것이다.    
+    
