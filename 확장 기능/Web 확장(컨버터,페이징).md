@@ -32,10 +32,8 @@ public String findMember2(@PathVariable("id") Member member) {
 
 +) 주의
 
-도메인 클래스 컨버터로 엔티티를 파라미터로 받으면, 이 엔티티는 단순 조회용으로만 사용해야 한다. 
-
-(트랜잭션이 없는 범위에서 엔티티를 조회했으므로, 엔티티를 변경해도 DB에 반영되지 않는다)
-
+도메인 클래스 컨버터로 엔티티를 파라미터로 받으면, 이 엔티티는 단순 조회용으로만 사용해야 한다. <br/>
+(트랜잭션이 없는 범위에서 엔티티를 조회했으므로, 엔티티를 변경해도 DB에 반영되지 않는다) <br/>
 또한 PK를 인자로 받으려면 외부에 공개해야 되기 때문에 자주 사용하는 기능은 아니다.
 
 ---
@@ -54,18 +52,19 @@ public Page<Member> list(Pageable pageable) {
 
 ```
 
-스프링 MVC 파라미터로 Pageable을 받을 수 있다. Pageable은 인터페이스이고, 실제로 PageRequest 객체를 생성해서 요청 파라미터 정보를 받는다.
+스프링 MVC 파라미터로 Pageable을 받을 수 있다. Pageable은 인터페이스이고, <br/>
+실제로 PageRequest 객체를 생성해서 요청 파라미터 정보를 받는다.
 
-<br/><br/>
+위의 findAll처럼 어떤 쿼리라도 jpa에 page가 내장되어 있기에 Pageable을 사용할 수 있다
+
+<br/>
 
 * 요청 파라미터
 
 ex) /members?page=0&size=3&sort=id,desc&sort=username,desc
 
-page: 현재 페이지, 0부터 시작한다.
-
-size: 한 페이지에 노출할 데이터 건수
-
+page: 현재 페이지, 0부터 시작한다. <br/>
+size: page 설정한 페이지에 노출할 데이터 건수 <br/>
 sort: 정렬 조건을 정의한다
 
 <br/>
@@ -126,7 +125,7 @@ ex) 요청 파라미터 /members?page=0
 
 ```
 
-<br/><br/><br/>
+<br/>
 
 #### 기본값
 
