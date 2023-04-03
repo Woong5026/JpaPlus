@@ -206,6 +206,11 @@ public class BaseEntity extends BaseTimeEntity {
 
 ```
 
+생성된 엔티티
+
+![image](https://user-images.githubusercontent.com/78454649/229519785-7b8bac7a-95e5-4965-b50a-0229b5a9a506.png)
+
+
 <br/>
 
 +) @MappedSuperclass가 아닌 임베디드 값 타입을 사용하면 안될까? <br/>
